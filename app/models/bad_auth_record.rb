@@ -1,0 +1,2 @@
+class BadAuthRecord < ApplicationRecord
+end
