@@ -26,10 +26,13 @@ class PhonesController < ApplicationController
         phone_record.time_consuming = rand(50)
         phone_record.time_start = Time.now
         phone_record.save
+        record = Record.last
+        record_id = record.id
         p phone_record
         rend_json = Hash.new
         rend_json[:status] = true
         rend_json[:time] = phone_record.time_consuming
+        rend_json[:record_id] = record_id
         render json: rend_json
       elsif user.auth == 1
         bad_record = BadAuthRecord.new
@@ -41,6 +44,15 @@ class PhonesController < ApplicationController
         render json: rend_json
       end
     end
+  end
+
+  def stop_time
+    time = params[:actual_time]
+    record_id = params[:record_id].to_i
+    record = Record.find(record_id)
+    record.actual_using_time = time
+    record.save
+    head :ok
   end
 
   def get_record

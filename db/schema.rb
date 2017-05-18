@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509084515) do
+ActiveRecord::Schema.define(version: 20170518105338) do
 
   create_table "bad_auth_records", force: :cascade do |t|
     t.string   "phone_num"
@@ -31,9 +31,10 @@ ActiveRecord::Schema.define(version: 20170509084515) do
     t.string   "mac_add"
     t.integer  "time_consuming"
     t.string   "time_start"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "phone_num"
+    t.string   "actual_using_time"
   end
 
 end
